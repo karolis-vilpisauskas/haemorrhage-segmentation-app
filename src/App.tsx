@@ -32,8 +32,8 @@ function App() {
             const im = new Image();
             im.crossOrigin = "anonymous";
             im.src = (reader.result as string) ?? "";
-            im.height = 2848;
-            im.width = 4288;
+            im.height = 512;
+            im.width = 512;
             console.log({
                model1: model,
             });
@@ -47,8 +47,8 @@ function App() {
                const data = await (predictionResult as any).dataSync();
                tf.dispose(predictionResult);
 
-               console.log();
-               const imagedata = new ImageData(Uint8ClampedArray.from(data), 512, 128);
+               const imagedata = new ImageData(Uint8ClampedArray.from(data), 256, 256);
+               console.log(imagedata);
                var canvas = document.createElement("canvas");
                var ctx = canvas.getContext("2d");
                canvas.width = imagedata.width;
